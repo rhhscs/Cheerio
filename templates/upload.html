@@ -1,0 +1,13 @@
+
+<p>Click on the "Choose File" button to upload a file:</p>
+
+<form action="/submit" method="POST" enctype="multipart/form-data">
+    <label for="language">Choose a language:</label>
+    <select name="language" id="language">
+        <option value="python">python</option>
+        <option value="java">java</option>
+        <option value="c/c++">c/c++</option>
+  </select>
+    <input type="file" id="file" name="code">
+    <input type="submit">
+</form>
