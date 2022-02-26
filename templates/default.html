@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <title>Cheerio | {% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>

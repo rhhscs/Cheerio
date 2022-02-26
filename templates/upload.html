@@ -1,4 +1,7 @@
+{% extends "default.html" %}
+{% block title %}Upload Code{% endblock %}
 
+{% block content %}
 <p>Click on the "Choose File" button to upload a file:</p>
 
 <form action="/submit" method="POST" enctype="multipart/form-data">
@@ -11,3 +14,4 @@
     <input type="file" id="file" name="code">
     <input type="submit">
 </form>
+{% endblock %}
