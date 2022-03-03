@@ -31,18 +31,49 @@ def run_cpp(inp, script, out):
 def run_java(inp, script, out):
     pass
 
+def compare(user_out, exp_out) -> str:
+    """_summary_
+
+    Args:
+        user_out (str): location of the file the user outputted to
+        exp_out (str): location of the file with the expected output
+
+    Returns:
+        str: submission status
+    """
+    with open(user_out, "r") as user_output_file, open(exp_out, "r") as expected_output_file:
+        user_output = user_output_file.readlines()
+        expected_output = expected_output_file.readlines()
+        if len(user_output) < len(expected_output):
+            return "WA"
+        else:
+            for i in range(len(expected_output)):
+                if user_output[i].strip() != expected_output[i].strip():
+                    return "WA"
+    return "AC"
+
 LANGUAGE_MAP = {"python": run_python, "java": run_java, "c/c++": run_cpp}
 def judge(inp, script, out, language):
     """
-    Executes the code then
+    Executes the code then checks if the code is correct
 
     Args:
         inp (string): location of the input file
         script (string): location of the code to be judged
         out (string): location of the output file
         language (string): string of language chosen from when code was submitted
+
+    Returns:
+        str: submission status
     """
+    if not language in LANGUAGE_MAP:
+        return "Invalid"
     try:
         LANGUAGE_MAP[language](inp, script, out)
+        # TODO: run this on a thread and limit the resources the thread gets for MLE and TLE errors
+        return compare(out, None) #TODO: get the expected output based on the question it's being submitted to, test cases, etc.
     except:
         print("error", file=sys.stderr)
+
+def submit(problem, user, script, language):
+    pass #TODO: write this function

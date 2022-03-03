@@ -41,6 +41,7 @@ def submit() -> str:
             print(file, file=sys.stdout)
             file.save(os.path.join(UPLOAD_FOLDER, secure_filename(file.filename)))
             filename = file.filename
+            #TODO: get problem as well and submit + judge code
             return render_template("submit.html", filename=file.filename)
         else:
             return "<p>Invalid file</p>"
