@@ -61,5 +61,15 @@ def display_problem(problem_id: str) -> str:
     """
     return render_template("problem.html", data=problems.get_problem_info(int(problem_id)))
 
+@app.route("/problems", methods=['GET'])
+def list_all_problems() -> str:
+    """
+    Lists all the problems on client side
+
+    Returns:
+        str: the HTML formatted version of all problems
+    """
+    return render_template("problems.html", data=problems.get_all_problem_info())
+
 if __name__ == "__main__":
     app.run()

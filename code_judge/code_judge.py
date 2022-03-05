@@ -32,7 +32,8 @@ def run_java(inp, script, out):
     pass
 
 def compare(user_out, exp_out) -> str:
-    """_summary_
+    """
+    Compares the user output against the expected output
 
     Args:
         user_out (str): location of the file the user outputted to

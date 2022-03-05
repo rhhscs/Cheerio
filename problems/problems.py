@@ -40,6 +40,23 @@ def get_problem_info(problem_id: int) -> map:
                 print(exc)
     return None
 
+def get_all_problem_info() -> list:
+    """
+    Gets the problem information for all problems
+
+    Returns:
+        list: list of all problem maps
+    """
+    all_problems = []
+    for problem in get_all_problems():
+        with open(f"./problems/{problem}", "r") as stream:
+            try:
+                problem_data = yaml.safe_load(stream)
+                all_problems.append(problem_data)
+            except yaml.YAMLError as exc:
+                print(exc)
+    return all_problems
+
 def parse_html(problem_id: int) -> str:
     """
     Parses the markdown description to HTML
