@@ -4,13 +4,14 @@ from flask import Flask, flash, request, redirect, render_template, url_for
 from werkzeug.utils import secure_filename
 
 import code_judge
+import problems
 
 UPLOAD_FOLDER = "./code_files/"
 EXTENSIONS = [".py", ".java", ".c", ".cpp"]
 
 app = Flask(__name__)
 
-@app.route("/", methods=['GET'])
+@app.route("/", methods=['GET']) #TODO: change this path to /upload later
 def upload() -> str:
     """
     Directs user to the page to upload a code file

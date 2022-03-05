@@ -1,0 +1,24 @@
+name: Sample Problem
+id: 1
+description: |
+  you are given `n` and a string to output, output the string n times
+points: 1
+mem_lim: 5
+time_lim: 2
+input:
+  - batch_1: |
+      5
+      hi
+  - batch_2: |
+      2
+      lol
+output:
+  - batch_1: |
+      hi
+      hi
+      hi
+      hi
+      hi
+  - batch_2: |
+      lol
+      lol
