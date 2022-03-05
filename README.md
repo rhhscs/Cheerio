@@ -9,5 +9,5 @@ RHHS CS Contest Code Judge
 ## Usage
 Assuming Windows usage:
 1. Install all [dependencies](#dependencies)
-2. `set flask_APP=name` in terminal
+2. `set FLASK_APP=name` in terminal
 3. Run [`app.py`](./app.py) or use `flask run`

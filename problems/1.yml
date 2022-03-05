@@ -1,7 +1,10 @@
 name: Sample Problem
 id: 1
-description: |
-  you are given `n` and a string to output, output the string n times
+description: >
+  you are given n and a 
+  <a href="https://en.wikipedia.org/wiki/String_(computer_science)" target="blank">string</a> 
+  to output, output the string n times $$a^2 + b^2 = c^2$$
+  <img src="/static/images/icon.png">
 points: 1
 mem_lim: 5
 time_lim: 2

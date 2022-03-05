@@ -48,5 +48,18 @@ def submit() -> str:
             return "<p>Invalid file</p>"
     return "<p>Ran</p>"
 
+@app.route("/problem/<problem_id>", methods=['GET'])
+def display_problem(problem_id: str) -> str:
+    """
+    Handles user requesting a specific problem
+
+    Args:
+        problem_id (str): the id of the problem, specified in URL
+
+    Returns:
+        str: the HTML of the problem template
+    """
+    return render_template("problem.html", data=problems.get_problem_info(int(problem_id)))
+
 if __name__ == "__main__":
     app.run()
