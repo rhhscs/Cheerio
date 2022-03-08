@@ -130,6 +130,3 @@ dmypy.json
 
 # things that don't need to be public
 /code_files
-
-# things that will screw everyone over if modified
-/code_judge/config.py
