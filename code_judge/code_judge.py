@@ -1,5 +1,6 @@
 import os
 import sys
+import config
 
 def run_python(inp, script, out):
     """
@@ -11,7 +12,7 @@ def run_python(inp, script, out):
         out (string): location of the output file
     """
     try:
-        os.system(f"type {inp} | python {script} 1 > {out} 2>&1")
+        os.system(f"type {inp} | {config.RUN_PYTHON} {script} 1 > {out} 2>&1")
     except:
         print("error", file=sys.stderr)
 
@@ -24,12 +25,13 @@ def run_cpp(inp, script, out):
         script (string): location of the code to be judged
         out (string): location of the output file
     """
-    os.system(f"g++ -o main {script} 2> {out}") # tosses errors into output file, if there are errors then file won't be empty
+    os.system(f"{config.COMPILE_CPP} main {script} 2> {out}") # tosses errors into output file, if there are errors then file won't be empty
     # TODO: check if file is empty, if empty return
     os.system(f"type {inp} | main 1 > {out} 2>&1")
 
 def run_java(inp, script, out):
-    pass
+    os.system(f"{config.COMPILE_JAVA} {script}")
+    os.system(f"type {inp} | {script.split(".")[0]} > {out} 2>&1")
 
 def compare(user_out, exp_out) -> str:
     """
