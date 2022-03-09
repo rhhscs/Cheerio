@@ -80,4 +80,5 @@ def judge(inp, script, out, language):
         print("error", file=sys.stderr)
 
 def submit(problem, user, script, language):
-    pass #TODO: write this function
+    pass
+    #TODO: write this function

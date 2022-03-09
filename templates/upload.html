@@ -4,7 +4,7 @@
 {% block content %}
 <p>Click on the "Choose File" button to upload a file:</p>
 
-<form action="/submit" method="POST" enctype="multipart/form-data">
+<form action="/submit/{{ problem_id }}" method="POST" enctype="multipart/form-data">
     <label for="language">Choose a language:</label>
     <select name="language" id="language">
         <option value="python">python</option>

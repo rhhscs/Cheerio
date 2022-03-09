@@ -21,20 +21,26 @@ def index() -> str:
     """
     return render_template("index.html")
 
-@app.route("/upload", methods=['GET']) #TODO: change this path to /upload later
-def upload() -> str:
+@app.route("/upload/<problem_id>", methods=['GET']) #TODO: change this path to /upload later
+def upload(problem_id: str) -> str:
     """
     Directs user to the page to upload a code file
+
+    Args:
+        problem_id (str): the id of the problem, specified in URL
 
     Returns:
         string: a string to be parsed into HTML by browser
     """
-    return render_template("upload.html")
+    return render_template("upload.html", problem_id=problem_id)
 
-@app.route("/submit", methods=['GET', 'POST'])
-def submit() -> str:
+@app.route("/submit/<problem_id>", methods=['GET', 'POST'])
+def submit(problem_id: str) -> str:
     """
     Handles the user uploading the code file to the server
+
+    Args:
+        problem_id (str): the id of the problem, specified in URL
 
     Returns:
         string: an HTML string for browser to parse
@@ -51,9 +57,13 @@ def submit() -> str:
             and (file.filename).endswith(tuple(EXTENSIONS)): # make sure the file ends with a valid extension
             print(file, file=sys.stdout)
             file.save(os.path.join(UPLOAD_FOLDER, secure_filename(file.filename)))
-            filename = file.filename
-            #TODO: get problem as well and submit + judge code
-            return render_template("submit.html", filename=file.filename)
+            code_judge.submit(
+                problems.get_problem_info(int(problem_id)),
+                None, # TODO: get user by cookie later
+                os.path.join(UPLOAD_FOLDER, secure_filename(file.filename)),
+                request.form["language"]
+            )
+            return render_template("submit.html", filename=secure_filename(file.filename))
         else:
             return "<p>Invalid file</p>"
     return "<p>Ran</p>"
@@ -69,7 +79,7 @@ def display_problem(problem_id: str) -> str:
     Returns:
         str: the HTML of the problem template
     """
-    return render_template("problem.html", data=problems.get_problem_info(int(problem_id)))
+    return render_template("problem.html", data=problems.get_problem_info(int(problem_id)), problem_id=problem_id)
 
 @app.route("/problems", methods=['GET'])
 def list_all_problems() -> str:
