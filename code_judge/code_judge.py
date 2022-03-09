@@ -1,6 +1,7 @@
 import os
 import sys
-import config
+import threading
+import code_judge.config
 
 def run_python(inp, script, out):
     """
@@ -31,7 +32,7 @@ def run_cpp(inp, script, out):
 
 def run_java(inp, script, out):
     os.system(f"{config.COMPILE_JAVA} {script}")
-    os.system(f"type {inp} | {script.split(".")[0]} > {out} 2>&1")
+    os.system(f"type {inp} | {script[:len(script) - 5]} > {out} 2>&1")
 
 def compare(user_out, exp_out) -> str:
     """

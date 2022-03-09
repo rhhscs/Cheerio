@@ -11,7 +11,17 @@ EXTENSIONS = [".py", ".java", ".c", ".cpp"]
 
 app = Flask(__name__)
 
-@app.route("/", methods=['GET']) #TODO: change this path to /upload later
+@app.route("/", methods=["GET"])
+def index() -> str:
+    """
+    Home page
+
+    Returns:
+        str: a string to be parsed into HTML by the browser
+    """
+    return render_template("index.html")
+
+@app.route("/upload", methods=['GET']) #TODO: change this path to /upload later
 def upload() -> str:
     """
     Directs user to the page to upload a code file

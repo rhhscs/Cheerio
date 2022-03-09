@@ -8,8 +8,10 @@
         <title>Cheerio | {% block title %}{% endblock %}</title>
     </head>
     <body>
+        {% include 'includes/navbar.html' %}
         <div class="content">
             {% block content %}{% endblock %}
         </div>
+        {% include 'includes/footer.html' %}
     </body>
 </html>
