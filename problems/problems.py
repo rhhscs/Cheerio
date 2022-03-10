@@ -7,7 +7,6 @@ Function:
     parse_html(int) -> str
 """
 
-import markdown
 import os
 import yaml
 
