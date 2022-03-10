@@ -21,6 +21,16 @@ def index() -> str:
     """
     return render_template("index.html")
 
+@app.route("/about", methods=["GET"])
+def about() -> str:
+    """
+    About Page
+
+    Returns:
+        str: a string to be parsed into HTML by the browser
+    """
+    return render_template("about.html")
+
 @app.route("/upload/<problem_id>", methods=['GET']) #TODO: change this path to /upload later
 def upload(problem_id: str) -> str:
     """
