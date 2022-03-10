@@ -3,36 +3,44 @@ import sys
 import threading
 import code_judge.config
 
-def run_python(inp, script, out):
+def run_python(inp: str, script: str, out: str):
     """
-    Judges a Python file
+    Runs a Python file
 
     Args:
-        inp (string): location of the input file
+        inp (string): the raw input
         script (string): location of the code to be judged
         out (string): location of the output file
     """
     try:
-        os.system(f"type {inp} | {config.RUN_PYTHON} {script} 1 > {out} 2>&1")
+        os.system(f"echo {inp} | {config.RUN_PYTHON} {script} 1 > {out} 2>&1")
     except:
         print("error", file=sys.stderr)
 
-def run_cpp(inp, script, out):
+def run_cpp(inp: str, script: str, out: str):
     """
-    Judges a C++ file
+    Runs a C++ file
 
     Args:
-        inp (string): location of the input file
+        inp (string): the raw input
         script (string): location of the code to be judged
         out (string): location of the output file
     """
     os.system(f"{config.COMPILE_CPP} main {script} 2> {out}") # tosses errors into output file, if there are errors then file won't be empty
     # TODO: check if file is empty, if empty return
-    os.system(f"type {inp} | main 1 > {out} 2>&1")
+    os.system(f"echo {inp} | main 1 > {out} 2>&1")
 
-def run_java(inp, script, out):
+def run_java(inp: str, script: str, out: str):
+    """
+    Runs a Java file
+
+    Args:
+        inp (str): the raw input
+        script (str): location of the code to be judged
+        out (str): location of the output file
+    """
     os.system(f"{config.COMPILE_JAVA} {script}")
-    os.system(f"type {inp} | {script[:len(script) - 5]} > {out} 2>&1")
+    os.system(f"echo {inp} | {script[:len(script) - 5]} > {out} 2>&1")
 
 def compare(user_out, exp_out) -> str:
     """
@@ -57,7 +65,7 @@ def compare(user_out, exp_out) -> str:
     return "AC"
 
 LANGUAGE_MAP = {"python": run_python, "java": run_java, "c/c++": run_cpp}
-def judge(inp, script, out, language):
+def judge(problem, script, language):
     """
     Executes the code then checks if the code is correct
 
@@ -78,6 +86,7 @@ def judge(inp, script, out, language):
         return compare(out, None) #TODO: get the expected output based on the question it's being submitted to, test cases, etc.
     except:
         print("error", file=sys.stderr)
+        return "RTE"
 
 def submit(problem, user, script, language):
     pass
