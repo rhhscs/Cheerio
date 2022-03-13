@@ -67,13 +67,13 @@ def submit(problem_id: str) -> str:
             and (file.filename).endswith(tuple(EXTENSIONS)): # make sure the file ends with a valid extension
             print(file, file=sys.stdout)
             file.save(os.path.join(UPLOAD_FOLDER, secure_filename(file.filename)))
-            code_judge.submit(
+            results = code_judge.submit(
                 problems.get_problem_info(int(problem_id)),
                 None, # TODO: get user by cookie later
                 os.path.join(UPLOAD_FOLDER, secure_filename(file.filename)),
                 request.form["language"]
             )
-            return render_template("submit.html", filename=secure_filename(file.filename))
+            return render_template("submit.html", filename=secure_filename(file.filename), results=results)
         else:
             return "<p>Invalid file</p>"
     return "<p>Ran</p>"
