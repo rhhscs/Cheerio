@@ -2,4 +2,6 @@ body {
     font-family: Helvetica, "Trebuchet MS", Verdana, sans-serif;
     color:white;
     background-color: #212121;
+    margin:auto;
+    text-align: center;
 }
