@@ -31,6 +31,16 @@ def about() -> str:
     """
     return render_template("about.html")
 
+@app.route("/rules", methods=["GET"])
+def rules() -> str:
+    """
+    Contest Rules Page
+
+    Returns:
+        str: a string to be parsed into HTML by the browser
+    """
+    return render_template("rules.html")
+
 @app.route("/upload/<problem_id>", methods=['GET']) #TODO: change this path to /upload later
 def upload(problem_id: str) -> str:
     """
