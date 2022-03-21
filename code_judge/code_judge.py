@@ -1,6 +1,8 @@
 import os
 import sys
-import threading
+import time
+from multiprocessing.pool import ThreadPool
+from multiprocessing import TimeoutError
 import code_judge.config
 
 def run_python(inp: str, script: str, out: str):
@@ -64,7 +66,7 @@ def compare(user_out, exp_out) -> str:
     return "AC"
 
 LANGUAGE_MAP = {"python": run_python, "java": run_java, "c/c++": run_cpp}
-def judge(inp, expected_out, script, language):
+def judge(inp, expected_out, script, language, mem_lim, time_lim):
     """
     Executes the code then checks if the code is correct
 
@@ -73,21 +75,40 @@ def judge(inp, expected_out, script, language):
         expected_out (string): the execpted output
         script (string): location of the code to be judged
         language (string): string of language chosen from when code was submitted
+        mem_lim (int): maximum amount of memory the code execution is allowed to use in MB
+        time_lim (int): maximum run time the code is allowed in seconds
 
     Returns:
-        str: submission status
+        map: submission status
     """
+    pool = ThreadPool(processes=1)
+    result = None
+    run_time = None
     if not language in LANGUAGE_MAP:
         return "Invalid"
     with open("./in.txt", "w") as input_file:
         input_file.write(inp)
-    LANGUAGE_MAP[language]("./in.txt", script, "./out.txt")
-    # TODO: run this on a thread and limit the resources the thread gets for MLE and TLE errors
-    return compare("./out.txt", expected_out) 
+    try:
+        # TODO: make MLE a thing
+        start_time = time.time()
+        result = pool.apply_async(LANGUAGE_MAP[language], ("./in.txt", script, "./out.txt")).get(timeout=time_lim)
+        run_time = time.time() - start_time
+    except TimeoutError:
+        result = "TLE"
+    if result is None:
+        result = compare("./out.txt", expected_out)
+    return {"status": result, "time": run_time}
 
 def submit(problem, user, script, language):
     results = []
     for i in range(len(problem["input"])):
-        status = judge(problem["input"][i][f"batch_{i + 1}"], problem["output"][i][f"batch_{i + 1}"], script, language)
+        status = judge(
+            problem["input"][i][f"batch_{i + 1}"], 
+            problem["output"][i][f"batch_{i + 1}"], 
+            script, 
+            language,
+            int(problem["mem_lim"]),
+            int(problem["time_lim"])
+        )
         results.append(status)
     return results

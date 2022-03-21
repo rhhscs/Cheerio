@@ -7,7 +7,7 @@ description: >
   <img src="/static/images/icon.png">
 points: 1
 mem_lim: 5
-time_lim: 2
+time_lim: 1
 input:
   - batch_1: |
       5
