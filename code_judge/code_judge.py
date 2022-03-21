@@ -95,6 +95,7 @@ def judge(inp, expected_out, script, language, mem_lim, time_lim):
         run_time = time.time() - start_time
     except TimeoutError:
         result = "TLE"
+        run_time = f">{time_lim}"
     if result is None:
         result = compare("./out.txt", expected_out)
     return {"status": result, "time": run_time}

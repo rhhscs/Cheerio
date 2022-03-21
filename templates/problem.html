@@ -6,5 +6,6 @@
 <p>Points: {{data.points}}</p>
 <p>Time Limit: {{data.time_lim}}s</p>
 <p>Memory Limit: {{data.mem_lim}}MB</p>
+<a href="/upload/{{ data.id }}">Submit</a><br>
 {{data.description | safe}}
 {% endblock %}

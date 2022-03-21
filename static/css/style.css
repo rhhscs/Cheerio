@@ -5,3 +5,19 @@ body {
     margin:auto;
     text-align: center;
 }
+
+.tle {
+    color: grey;
+}
+
+.wa {
+    color: red;
+}
+
+.mle {
+    color: grey;
+}
+
+.ac {
+    color: green;
+}

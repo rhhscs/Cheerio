@@ -3,5 +3,7 @@
 
 {% block content %}
 <p>Uploaded {{filename}} successfully!</p>
-{{results}}
+{% for result in results %}
+    <p class="{{ result.status | lower }}"> {{ result.status }} [{{ result.time }}s]</p>
+{% endfor %}
 {% endblock %}
