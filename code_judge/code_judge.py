@@ -5,6 +5,19 @@ from multiprocessing.pool import ThreadPool
 from multiprocessing import TimeoutError
 import code_judge.config
 
+def compile_java(script: str):
+    """
+    Compiles a Java program
+
+    Args:
+        script (string): location of the code
+    """
+    print(f"{code_judge.config.COMPILE_JAVA} {script}")
+    os.system(f"{code_judge.config.COMPILE_JAVA} {script}")
+
+def compile_cpp(script):
+    os.system(f"{code_judge.config.COMPILE_CPP} main {script} 2> {out}") # tosses errors into output file, if there are errors then file won't be empty
+
 def run_python(inp: str, script: str, out: str):
     """
     Runs a Python file
@@ -25,7 +38,6 @@ def run_cpp(inp: str, script: str, out: str):
         script (string): location of the code to be judged
         out (string): location of the output file
     """
-    os.system(f"{code_judge.config.COMPILE_CPP} main {script} 2> {out}") # tosses errors into output file, if there are errors then file won't be empty
     # TODO: check if file is empty, if empty return
     os.system(f"type {inp} | main 1 > {out} 2>&1")
 
@@ -38,10 +50,16 @@ def run_java(inp: str, script: str, out: str):
         script (str): location of the code to be judged
         out (str): location of the output file
     """
-    os.system(f"{code_judge.config.COMPILE_JAVA} {script}")
-    os.system(f"type {inp} | {script[:len(script) - 5]} > {out} 2>&1")
+    script = script.split("code_files/")[1]
+    home = os.getcwd()
+    os.chdir(f"{os.getcwd()}\code_files")
+    inp_file = inp.split("/")[1]
+    backslash = "\\"
+    os.system(f"type {home}{backslash}{inp_file} | java {script[:len(script) - 5]} > .{out} 2>&1")
+    print(f"type {home}{backslash}{inp_file} | java {script[:len(script) - 5]} > .{out} 2>&1", file=sys.stdout)
+    os.chdir(home)
 
-def compare(user_out, exp_out) -> str:
+def compare(user_out: str, exp_out: str) -> str:
     """
     Compares the user output against the expected output
 
@@ -55,6 +73,7 @@ def compare(user_out, exp_out) -> str:
     with open(user_out, "r") as user_output_file:
         user_output = user_output_file.readlines()
         expected_output = exp_out.split("\n")
+        print(user_output, expected_output)
         if expected_output[-1] == "":
             del expected_output[-1]
         if len(user_output) < len(expected_output):
@@ -65,8 +84,9 @@ def compare(user_out, exp_out) -> str:
                     return "WA"
     return "AC"
 
-LANGUAGE_MAP = {"python": run_python, "java": run_java, "c/c++": run_cpp}
-def judge(inp, expected_out, script, language, mem_lim, time_lim):
+COMPILE_LANGUAGE_MAP = {"java": compile_java, "c/c++": compile_cpp}
+RUN_LANGUAGE_MAP = {"python": run_python, "java": run_java, "c/c++": run_cpp}
+def judge(inp: str, expected_out: str, script: str, language: str, mem_lim: int, time_lim: int):
     """
     Executes the code then checks if the code is correct
 
@@ -84,14 +104,16 @@ def judge(inp, expected_out, script, language, mem_lim, time_lim):
     pool = ThreadPool(processes=1)
     result = None
     run_time = None
-    if not language in LANGUAGE_MAP:
+    if language in COMPILE_LANGUAGE_MAP:
+        COMPILE_LANGUAGE_MAP[language](script)
+    if not language in RUN_LANGUAGE_MAP:
         return "Invalid"
     with open("./in.txt", "w") as input_file:
         input_file.write(inp)
     try:
         # TODO: make MLE a thing
         start_time = time.time()
-        result = pool.apply_async(LANGUAGE_MAP[language], ("./in.txt", script, "./out.txt")).get(timeout=time_lim)
+        result = pool.apply_async(RUN_LANGUAGE_MAP[language], ("./in.txt", script, "./out.txt")).get(timeout=time_lim)
         run_time = time.time() - start_time
     except TimeoutError:
         result = "TLE"
@@ -100,7 +122,7 @@ def judge(inp, expected_out, script, language, mem_lim, time_lim):
         result = compare("./out.txt", expected_out)
     return {"status": result, "time": run_time}
 
-def submit(problem, user, script, language):
+def submit(problem: dict, user, script: str, language: str):
     results = []
     for i in range(len(problem["input"])):
         status = judge(
