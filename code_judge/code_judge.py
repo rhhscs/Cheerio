@@ -56,7 +56,6 @@ def run_java(inp: str, script: str, out: str):
     inp_file = inp.split("/")[1]
     backslash = "\\"
     os.system(f"type {home}{backslash}{inp_file} | java {script[:len(script) - 5]} > .{out} 2>&1")
-    print(f"type {home}{backslash}{inp_file} | java {script[:len(script) - 5]} > .{out} 2>&1", file=sys.stdout)
     os.chdir(home)
 
 def compare(user_out: str, exp_out: str) -> str:
@@ -73,7 +72,6 @@ def compare(user_out: str, exp_out: str) -> str:
     with open(user_out, "r") as user_output_file:
         user_output = user_output_file.readlines()
         expected_output = exp_out.split("\n")
-        print(user_output, expected_output)
         if expected_output[-1] == "":
             del expected_output[-1]
         if len(user_output) < len(expected_output):

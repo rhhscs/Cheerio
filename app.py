@@ -41,7 +41,7 @@ def rules() -> str:
     """
     return render_template("rules.html")
 
-@app.route("/upload/<problem_id>", methods=['GET']) #TODO: change this path to /upload later
+@app.route("/upload/<problem_id>", methods=['GET'])
 def upload(problem_id: str) -> str:
     """
     Directs user to the page to upload a code file
