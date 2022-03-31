@@ -8,4 +8,16 @@
 <p>Memory Limit: {{data.mem_lim}}MB</p>
 <a href="/upload/{{ data.id }}">Submit</a><br>
 {{data.description | safe}}
+{% for sample in data.samples %}
+<h4>Input</h4>
+<button onclick="copyToClipboard('{{ sample.input_data }}')">Copy</button>
+<pre class="sample-io">
+{{ sample.input }}
+</pre>
+<h4>Output</h4>
+<button onclick="copyToClipboard('{{ sample.output }}')">Copy</button>
+<pre class="sample-io">
+{{ sample.output }}
+</pre>
+{% endfor %}
 {% endblock %}

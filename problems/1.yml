@@ -8,6 +8,17 @@ description: >
 points: 1
 mem_lim: 5
 time_lim: 1
+samples:
+  - input: |
+      2
+      lol
+    output: |
+      lol
+      lol
+    input_data: >-
+      2\nlol
+    output_data: >-
+      lol\nlol
 input:
   - batch_1: |
       5

@@ -68,4 +68,3 @@ def parse_html(problem_id: int) -> str:
     """
     problem_data = get_problem_info(problem_id)
     return markdown.markdown(problem_data["description"])
-
