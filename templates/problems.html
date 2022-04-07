@@ -2,7 +2,10 @@
 {% block title %}Problems{% endblock %}
 
 {% block content %}
-{% for problem in data %}
-    <a href="/problem/{{ problem.id }}">{{ problem.name }}</a>
-{% endfor %}
+<div>
+    {% for problem in data %}
+        <a href="/problem/{{ problem.id }}">{{ problem.name }}</a>
+    {% endfor %}
+</div>
+
 {% endblock %}
