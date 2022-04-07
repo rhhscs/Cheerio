@@ -2,6 +2,7 @@
 {% block title %}Problems{% endblock %}
 
 {% block content %}
+
 <div>
     {% for problem in data %}
         <a href="/problem/{{ problem.id }}">{{ problem.name }}</a>

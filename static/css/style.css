@@ -25,3 +25,17 @@ body {
 .sample-io {
     text-align: left;
 }
+
+a:link {
+color: yellow;
+background-color: transparent;
+text-decoration: none;
+}
+
+a:visited {
+color: orange;
+background-color: transparent;
+text-decoration: none;
+}
+
+
