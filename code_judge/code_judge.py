@@ -120,7 +120,19 @@ def judge(inp: str, expected_out: str, script: str, language: str, mem_lim: int,
         result = compare("./out.txt", expected_out)
     return {"status": result, "time": run_time}
 
-def submit(problem: dict, user, script: str, language: str):
+def submit(problem: dict, user: str, script: str, language: str) -> str:
+    """
+    Deals with the user submitting a problem
+
+    Args:
+        problem (dict): the YAML file of the problem
+        user (str): the string of the user's cookie
+        script (str): the location of the script
+        language (str): the language it was submitted in
+
+    Returns:
+        str: the submission status of the program
+    """
     results = []
     for i in range(len(problem["input"])):
         status = judge(

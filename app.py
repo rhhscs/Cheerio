@@ -1,6 +1,6 @@
 import os
 import sys
-from flask import Flask, flash, request, redirect, render_template, url_for
+from flask import Flask, flash, make_response, request, redirect, render_template, url_for
 from werkzeug.utils import secure_filename
 
 import code_judge
@@ -19,7 +19,12 @@ def index() -> str:
     Returns:
         str: a string to be parsed into HTML by the browser
     """
-    return render_template("index.html")
+    user = request.cookies.get("user")
+    print(user)
+    if user is None:
+        return redirect("/login")
+    else:
+        return redirect("/problems")
 
 @app.route("/about", methods=["GET"])
 def about() -> str:
@@ -69,17 +74,14 @@ def submit(problem_id: str) -> str:
         if 'code' not in request.files:
             flash("No file, invalid")
             return redirect(request.url)
-        print("files", request.files, file=sys.stdout)
-        print("request", request.form, file=sys.stdout)
         file = request.files['code']
         # make sure there's a file that exists
         if (file is not None and file.filename is not "") \
             and (file.filename).endswith(tuple(EXTENSIONS)): # make sure the file ends with a valid extension
-            print(file, file=sys.stdout)
             file.save(os.path.join(UPLOAD_FOLDER, secure_filename(file.filename)))
             results = code_judge.submit(
                 problems.get_problem_info(int(problem_id)),
-                None, # TODO: get user by cookie later
+                request.cookies.get("user"), #TODO: find a more secure way to do this later
                 os.path.join(UPLOAD_FOLDER, secure_filename(file.filename)),
                 request.form["language"]
             )
@@ -110,6 +112,49 @@ def list_all_problems() -> str:
         str: the HTML formatted version of all problems
     """
     return render_template("problems.html", data=problems.get_all_problem_info())
+
+@app.route("/login", methods=['GET', 'POST'])
+def login() -> str:
+    """
+    Authenticates user login
+
+    Returns:
+        str: the HTML for logging in
+    """
+    if request.method == 'GET':
+        return render_template("login.html")
+    else:
+        resp = make_response(render_template("login.html"))
+        print(request.form["username"], request.form["password"])
+        #TODO: actually check login
+        resp.set_cookie("user", request.form["username"])
+        return resp
+
+@app.route("/logout", methods=['GET'])
+def logout() -> str:
+    """
+    Logs the user out
+
+    Returns:
+        str: the HTML for the place the user was redirected to
+    """
+    resp = make_response(redirect("/"))
+    resp.delete_cookie("user")
+    return resp
+
+@app.route("/signup", methods=['GET', 'POST'])
+def signup() -> str:
+    """
+    Signs the user up
+
+    Returns:
+        str: HTML for the signup page
+    """
+    if request.method == 'GET':
+        return render_template("signup.html")
+    else:
+        pass
+        #TODO: deal with creating new accounts
 
 if __name__ == "__main__":
     app.run()
