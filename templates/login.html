@@ -2,6 +2,9 @@
 {% block title %}Login{% endblock %}
 {% block content %}
 Log in
+
+<div class="g-signin2" data-onsuccess="onSignIn"></div>
+
 <form action="/login" method="POST" enctype="multipart/form-data">
     Username: <input name="username" type="text"><br>
     Password: <input name="password" type="password"><br>
