@@ -58,6 +58,25 @@ def run_java(inp: str, script: str, out: str):
     os.system(f"type {home}{backslash}{inp_file} | java {script[:len(script) - 5]} > .{out} 2>&1")
     os.chdir(home)
 
+def check_banned(script: str) -> bool:
+    """
+    checks if there are banned words in the code
+
+    Args:
+        script (str): the file location for the script
+
+    Returns:
+        bool: True if the script has banned words, False otherwise
+    """
+    with open(script, "r") as file:
+        content = file.read()
+        print(content)
+        for banned_phrase in code_judge.config.BAN_LIST:
+            print(banned_phrase)
+            if banned_phrase in content:
+                return True
+    return False
+
 def compare(user_out: str, exp_out: str) -> str:
     """
     Compares the user output against the expected output
@@ -122,14 +141,17 @@ def judge(inp: str, expected_out: str, script: str, language: str, mem_lim: int,
 
 def submit(problem: dict, user, script: str, language: str):
     results = []
-    for i in range(len(problem["input"])):
-        status = judge(
-            problem["input"][i][f"batch_{i + 1}"], 
-            problem["output"][i][f"batch_{i + 1}"], 
-            script, 
-            language,
-            int(problem["mem_lim"]),
-            int(problem["time_lim"])
-        )
-        results.append(status)
+    if check_banned(script):
+        results.append({"status": "Code contains banned words", "time": "None"})
+    else:
+        for i in range(len(problem["input"])):
+            status = judge(
+                problem["input"][i][f"batch_{i + 1}"], 
+                problem["output"][i][f"batch_{i + 1}"], 
+                script, 
+                language,
+                int(problem["mem_lim"]),
+                int(problem["time_lim"])
+            )
+            results.append(status)
     return results
