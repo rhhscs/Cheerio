@@ -81,7 +81,7 @@ def submit(problem_id: str) -> str:
             file.save(os.path.join(UPLOAD_FOLDER, secure_filename(file.filename)))
             results = code_judge.submit(
                 problems.get_problem_info(int(problem_id)),
-                request.cookies.get("user"), #TODO: find a more secure way to do this later
+                None, #TODO: access Google account cookie
                 os.path.join(UPLOAD_FOLDER, secure_filename(file.filename)),
                 request.form["language"]
             )
@@ -125,9 +125,7 @@ def login() -> str:
         return render_template("login.html")
     else:
         resp = make_response(render_template("login.html"))
-        print(request.form["username"], request.form["password"])
-        #TODO: actually check login
-        resp.set_cookie("user", request.form["username"])
+        print(request.form["userid"], file=sys.stdout) #TODO: do stuff with userid (log to db if user does not already exist)
         return resp
 
 @app.route("/logout", methods=['GET'])
@@ -139,22 +137,8 @@ def logout() -> str:
         str: the HTML for the place the user was redirected to
     """
     resp = make_response(redirect("/"))
-    resp.delete_cookie("user")
+    resp.delete_cookie("user") #TODO: make a logout template that just calls the logout function from Google API and redirects to /
     return resp
-
-@app.route("/signup", methods=['GET', 'POST'])
-def signup() -> str:
-    """
-    Signs the user up
-
-    Returns:
-        str: HTML for the signup page
-    """
-    if request.method == 'GET':
-        return render_template("signup.html")
-    else:
-        pass
-        #TODO: deal with creating new accounts
 
 if __name__ == "__main__":
     app.run()

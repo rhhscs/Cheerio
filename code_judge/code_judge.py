@@ -12,7 +12,6 @@ def compile_java(script: str):
     Args:
         script (string): location of the code
     """
-    print(f"{code_judge.config.COMPILE_JAVA} {script}")
     os.system(f"{code_judge.config.COMPILE_JAVA} {script}")
 
 def compile_cpp(script):
@@ -38,7 +37,7 @@ def run_cpp(inp: str, script: str, out: str):
         script (string): location of the code to be judged
         out (string): location of the output file
     """
-    # TODO: check if file is empty, if empty return
+    # TODO: check if file is empty, if empty continue, otherwise don't run
     os.system(f"type {inp} | main 1 > {out} 2>&1")
 
 def run_java(inp: str, script: str, out: str):
@@ -50,6 +49,7 @@ def run_java(inp: str, script: str, out: str):
         script (str): location of the code to be judged
         out (str): location of the output file
     """
+    # TODO: check if file is empty
     script = script.split("code_files/")[1]
     home = os.getcwd()
     os.chdir(f"{os.getcwd()}\code_files")
