@@ -81,7 +81,7 @@ def submit(problem_id: str) -> str:
             file.save(os.path.join(UPLOAD_FOLDER, secure_filename(file.filename)))
             results = code_judge.submit(
                 problems.get_problem_info(int(problem_id)),
-                None, #TODO: access Google account cookie
+                request.cookies.get("user"), #TODO: link this with db after db exists
                 os.path.join(UPLOAD_FOLDER, secure_filename(file.filename)),
                 request.form["language"]
             )

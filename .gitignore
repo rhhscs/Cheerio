@@ -133,3 +133,4 @@ dmypy.json
 in.txt
 out.txt
 code_judge/config.py
+*.db
