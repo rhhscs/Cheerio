@@ -8,16 +8,13 @@ function copyToClipboard(value) {
 
 
 function onSignIn(googleUser) { 
-    // function from Google's documentation
+    // function from Google's documentation, slightly modified
     var profile = googleUser.getBasicProfile();
-    console.log(profile);
+    console.log(googleUser);
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '/login');
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onload = function() {
-        console.log('Signed in as: ' + xhr.responseText);
-    };
-    xhr.send("userid=" + googleUser.getAuthResponse().id_token);
+    xhr.send("userid=" + JSON.stringify(googleUser.getBasicProfile()));
 }
 
 function signOut() {

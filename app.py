@@ -1,3 +1,4 @@
+import json
 import os
 import sys
 from flask import Flask, flash, make_response, request, redirect, render_template, url_for
@@ -20,7 +21,6 @@ def index() -> str:
         str: a string to be parsed into HTML by the browser
     """
     user = request.cookies.get("user")
-    print(user)
     if user is None:
         return redirect("/login")
     else:
@@ -125,7 +125,10 @@ def login() -> str:
         return render_template("login.html")
     else:
         resp = make_response(render_template("login.html"))
-        print(request.form["userid"], file=sys.stdout) #TODO: do stuff with userid (log to db if user does not already exist)
+        # user list: [google id, full name, first name, last name, profile picture, email account]
+        user = list(json.loads(request.form["userid"]).values()) #TODO: do stuff with userid (log to db if user does not already exist)
+        resp.set_cookie("user", user[0])
+        resp = make_response(redirect("/"))
         return resp
 
 @app.route("/logout", methods=['GET'])
