@@ -1,0 +1,60 @@
+body {
+    font-family: Helvetica, "Trebuchet MS", Verdana, sans-serif;
+    color:white;
+    background-color: #212121;
+    margin:auto;
+    text-align: center;
+}
+
+a:link {
+    color: yellow;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:visited {
+    color: orange;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+
+}
+nav {
+    background-color: #212121;
+    height: 50px;
+
+}
+
+nav ul {
+
+    height: 50px;
+    width: 600px;
+    margin: 0 auto;
+
+
+}
+
+nav ul li {
+    list-style-type: none;
+    width: 150px;
+    float: left;
+    text-align: center;
+
+}
+
+li a:hover {
+    background-color: yellow;
+    color: #212121;
+
+}
+
+li a {
+    text-decoration: none;
+    color: yellow;
+    line-height: 50px;
+    display: block;
+}
