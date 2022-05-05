@@ -2,16 +2,54 @@
 {% block title %}Upload Code{% endblock %}
 
 {% block content %}
+
+<style>
+
+
+
+    .upload-form {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    p {
+        font-size: 25px;
+        color: yellow;
+    }
+
+    
+    label {
+        font-size: 25px;
+        color: yellow;
+        text-align: left;
+    }
+
+    input {
+        font-size: 25px;
+        text-align: left;
+    }
+
+    select  {
+        font-size: 25px;
+    }
+
+    option {
+        font-size: 25px;
+    }
+
+</style>
+
 <p>Click on the "Choose File" button to upload a file:</p>
+
 
 <form action="/submit/{{ problem_id }}" method="POST" enctype="multipart/form-data">
     <label for="language">Choose a language:</label>
     <select name="language" id="language">
-        <option value="python">python</option>
-        <option value="java">java</option>
-        <option value="c/c++">c/c++</option>
-  </select>
-    <input type="file" id="file" name="code" accept=".py,.java,.c,.cpp">
-    <input type="submit">
-</form>
+        <option value="python">Python</option>
+        <option value="java">Java</option>
+        <option value="c/c++">C/C++</option>  
+    </select><br><br>
+    <input type="file" id="file" name="code" accept=".py,.java,.c,.cpp"> <br><br>
+    <input type="submit"> <br>
+</form> 
+
 {% endblock %}
