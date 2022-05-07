@@ -58,3 +58,13 @@ li a {
     line-height: 50px;
     display: block;
 }
+
+pre {
+    display: inline-block;
+    text-align: left;
+}
+
+.chessie-cow {
+    align-items: center;
+    
+}
