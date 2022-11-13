@@ -1,0 +1,43 @@
+{
+    "entries": [
+        {
+            "Q": "What is competitive programming?",
+            "A": [
+                "It is a mind sport where participants write computer programs to solve mathematical and logical puzzles.",
+                "Contestants are typically judged on how correct and efficient their programs are and how fast they solved the problem.",
+                "Here's a <a href=\"https://www.youtube.com/watch?v=ueNT-w7Oluw\" target=\"_blank\">great video</a> explaining competitive programming."
+            ]
+        },
+        {
+            "Q": "What programming languages do I need to know?",
+            "A": [
+                "As the contest will be run on DMOJ, you should be familiar with at least one of the <a href=\"https://github.com/DMOJ/online-judge#supported-languages\" target=\"_blank\">allowed languages.</a>"
+            ]
+        },
+        {
+            "Q": "What do I do if it says \"access denied\" on the contest page?",
+            "A": [
+                "Make sure you are logged into DMOJ and your account is part of the RHHS organization.",
+                "To join the RHHS organization, make sure you are logged in, then head over to <a href=\"https://dmoj.ca/organization/19-richmond-hill-hs\" target=\"_blank\">this link</a> and click the blue \"Join organization\" button."
+            ]
+        },
+        {
+            "Q": "How long will the contest be?",
+            "A": [
+                "You will have 2 hours and 30 minutes for the contest, from 3:45 P.M. to 6:15 P.M."
+            ]
+        },
+        {
+            "Q": "How can I practice for competitive programming contests?",
+            "A": [
+                "There are many great online judges with large problemsets that you can use to practice, such as <a href=\"https://dmoj.ca/problems/\" target=\"_blank\">DMOJ</a>, <a href=\"https://leetcode.com/problemset/all/\" target=\"_blank\">LeetCode</a>, <a href=\"https://codeforces.com/problemset\" target=\"_blank\">Codeforces</a> and <a href=\"https://www.hackerrank.com/domains/algorithms\" target=\"_blank\">HackerRank</a>."
+            ]
+        },
+        {
+            "Q": "How can I get in touch with the RHHS CS Club?",
+            "A": [
+                "You can email us at <a href=\"mailto:rhhs.compsci@gmail.com\" target=\"_blank\">rhhs.compsci@gmail.com<a> or message us on instagram <a href=\"https://www.instagram.com/rhhs.cs.club/\" target=\"_blank\">@rhhs.cs.club</a>."
+            ]
+        }
+    ]
+}

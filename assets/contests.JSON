@@ -1,0 +1,24 @@
+{
+    "upcoming": [
+        {
+            "title": "Cheerio 2",
+            "date": "Nov 24, 2022",
+            "img": "./assets/images/tech-bg-3.jpg",
+            "url": "https://dmoj.ca/contest/cheerio2"
+        }
+    ],
+    "past": [
+        {
+            "title": "Cheerio 1 Senior",
+            "date": "June 9, 2022",
+            "img": "./assets/images/tech-bg-2.jpg",
+            "url": "https://dmoj.ca/contest/cheerio1s"
+        },
+        {
+            "title": "Cheerio 1 Junior",
+            "date": "June 9, 2022",
+            "img": "./assets/images/tech-bg-2.jpg",
+            "url": "https://dmoj.ca/contest/cheerio1j"
+        }
+    ]
+}

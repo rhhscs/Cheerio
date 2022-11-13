@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&family=Titillium+Web:wght@600&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: #FBFCD4;
+    font-family: "Montserrat";
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    /* overflow-x: hidden;  */
+}
+
+body {
+    background-color: rgb(30, 30, 30);
+    background-image: url('./images/seamless-linen-background.jpg');
+    background-attachment: scroll;
+    position: relative;
+}
+
+/* ------------NAVBAR-------------- */
+nav {
+    background-color: #2e2e2e;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+    /* height: 100%; */
+}
+
+nav img {
+    height: 2em;
+    width: auto;
+}
+
+.nav-link:hover, nav .active{
+    color: rgb(255, 221, 3) !important;
+}
+
+/* ---- INTRO STYLES ----------------- */
+
+header {
+    height: 100vh;
+    width: 100%;
+    max-height: 100vh;
+    /* background-color: rgba(10, 10, 10, 0.8); */
+    /* border-bottom: 0.5rem solid rgb(255, 221, 3); */
+}
+
+header, section {
+    padding-top: 5em;
+}
+
+header .container {
+    width: 100%;
+    height: 100%;
+}
+
+header .row {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+header .row div:nth-child(2) {
+    padding: 2em;
+}
+
+h1 {
+    font-size: 10em;
+    font-family: "Titillium Web";
+}
+
+mark, h3 {
+    margin-left: 8px;
+}
+
+h3 {
+    opacity: 0.7;
+    line-height: 150%;
+}
+
+mark {
+    font-size: 2em;
+    font-weight: bold;
+    display: inline;
+    padding: 0.2em;
+    padding-left: 0.4em;
+    padding-right: 0.4em;
+    color: rgb(30, 30, 30);
+    background: rgb(255,225,35);
+    background: linear-gradient(66deg, rgba(255,225,35,1) 0%, rgba(255,166,0,1) 100%);
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media only screen and (max-width: 992px) {
+    header {
+        padding-top: 80px;
+    }
+    header img {
+        max-width: 35vh;
+    }
+    header .row div:nth-child(1) {
+        /* padding-top: 3em; */
+    }
+    header .row div:nth-child(2) {
+        display: flex;
+        justify-content: flex-end;
+        /* justify-content: center; */
+    }
+    h1 {
+        font-size: 8em;
+    }
+    mark {
+        font-size: 1.5em;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    header img {
+        /* max-width: 80vw; */
+        /* width: 50%; */
+    }
+    header .row div:nth-child(2) {
+        display: flex;
+        /* justify-content: center; */
+    }
+    h1 {
+        font-size: 6em;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    h3 {
+        padding-right: 2em;
+    }
+}
+
+/* -------- END OF INTRO STYLES ------------- */
+
+h2 {
+    font-family: "Titillium Web";
+    font-size: 4em;
+    position: relative;
+    /* display: inline; */
+    margin-bottom: 0.8em;
+
+}
+
+h2::before {
+    content: "";
+    position: absolute;
+    top: 110%;
+    /* width: 100%; */
+    width: 0%;
+    left: 0;
+    height: 10px;
+    /* border-radius: 2px; */
+    background: rgb(255,225,35);
+    background: linear-gradient(66deg, rgba(255,225,35,1) 0%, rgba(255,166,0,1) 100%);
+    transition: 1s ease-in-out;
+}
+
+h2.scrolled::before {
+    width: 100%;
+}
+
+p {
+    font-size: 18px;
+}
+
+#about img {
+    border-radius: 10px;
+}
+
+a:link {
+    color: rgb(255,225,35);
+}
+
+a:visited {
+    color: rgb(255,166,0);
+}
+
+a:hover {
+    opacity: 0.6;
+}
+
+section {
+    /* min-height: 100vh; */
+}
+
+h4 {
+    /* font-family: "Titillium Web"; */
+    font-weight: bold;    
+}
+
+h5 {
+    font-family: "Titillium Web";
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    /* background-color: #FBFCD4; */
+    background-color: rgba(40, 40, 40, 0.8);
+}
+
+.card * {
+    /* color: rgb(30, 30, 30); */
+    color: white;
+}
+
+.card a {
+    min-width: 50%;
+    font-weight: bold;
+    color: rgb(30, 30, 30);
+    background: rgb(255,225,35);
+    background: linear-gradient(66deg, rgba(255,225,35,1) 0%, rgba(255,166,0,1) 100%);
+    transition: 70ms cubic-bezier(1, 0, 0, 1);
+}
+
+.card a:hover {
+    /* transform: scale(0.95); */
+}
+
+.card img {
+    height: 7em;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#faq li {
+    list-style: none;
+    margin-bottom: 1em;
+    border: 2px solid #2e2e2e;
+    border-radius: 5px;
+    padding: 1em;
+}
+
+#faq ul{
+    margin-bottom: 0;
+}
+
+#faq li button {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    font-family: "Titillium Web";
+    font-size: 1.7em;
+}
+
+#faq li:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+#faq li .collapse {
+    /* padding: 1em; */
+}
+
+#faq li p {
+    opacity: 0.8;
+    margin-bottom: 0;
+}
