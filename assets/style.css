@@ -100,25 +100,49 @@ img {
     }
     header img {
         max-width: 35vh;
+        margin-left: 7em;
     }
     header .row div:nth-child(2) {
         display: flex;
+        /* justify-content: center; */
         justify-content: flex-end;
     }
     h1 {
         font-size: 8em;
     }
+    h3 {
+        font-size: 1.3em;
+    }
     mark {
         font-size: 1.5em;
+    }
+    #about img {
+        width: 90%;
+        margin-top: 2em;
+    }
+    #about .row div:nth-child(2) {
+        display: flex;
+        justify-content: center;
     }
 }
 
 @media only screen and (max-width: 768px) {
     header .row div:nth-child(2) {
         display: flex;
+        /* justify-content: center; */
     }
     h1 {
         font-size: 6em;
+    }
+    header img {
+        margin: 0
+    }
+}
+
+@media only screen and (max-width: 481px) {
+    header .row div:nth-child(2) {
+        display: flex;
+        justify-content: center;
     }
 }
 
