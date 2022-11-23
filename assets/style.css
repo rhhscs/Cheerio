@@ -214,17 +214,19 @@ h5 {
     background-color: rgba(40, 40, 40, 0.8);
 }
 
-.card:hover {
+/* .card:hover {
     background-color: rgba(50, 50, 50, 0.8);
-}
+} */
 
 .card * {
     color: white;
 }
 
 .card a {
+    position: relative;
     min-width: 50%;
     font-weight: bold;
+    border: none;
     color: rgb(30, 30, 30);
     background: rgb(255,225,35);
     background: linear-gradient(66deg, rgba(255,225,35,1) 0%, rgba(255,166,0,1) 100%);
@@ -235,6 +237,29 @@ h5 {
     height: 7em;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+}
+
+.card a::before {
+    content: "View Contest";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 0.25rem;
+    background-color: white;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card a:hover {
+    opacity: 1;
+}
+
+.card a:hover::before {
+    opacity: 0.2;
 }
 
 #faq li {
