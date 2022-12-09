@@ -97,7 +97,9 @@ function addContest(contest, list, num) {
 
     cardBody.appendChild(h5);
     cardBody.appendChild(p);
-    cardBody.appendChild(a);
+    if (contest.url !== "") {
+        cardBody.appendChild(a);
+    }
     card.appendChild(img);
     card.appendChild(cardBody);
     container.appendChild(card);
