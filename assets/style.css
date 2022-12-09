@@ -299,3 +299,31 @@ h5 {
     opacity: 0.8;
     margin-bottom: 0;
 }
+
+footer > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+footer > div > div {
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+footer i {
+    font-size: 2em;
+    transition: 200ms ease;
+}
+
+footer i:hover {
+    color: rgb(255,225,35);
+}
+
+footer p {
+    margin-top: 2em;
+    font-size: 0.8em;
+}
