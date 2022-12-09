@@ -89,6 +89,8 @@ function addContest(contest, list, num) {
 
     let a = document.createElement("a");
     a.classList.add("btn");
+    a.setAttribute("data-mdb-ripple-color", "light");
+    a.setAttribute("type", "button");
     a.setAttribute("href", contest.url);
     a.setAttribute("target", "_blank");
     a.innerText = "View Contest";

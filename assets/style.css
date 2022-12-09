@@ -231,6 +231,7 @@ h5 {
     background: rgb(255,225,35);
     background: linear-gradient(66deg, rgba(255,225,35,1) 0%, rgba(255,166,0,1) 100%);
     transition: 70ms cubic-bezier(1, 0, 0, 1);
+    text-transform: none;
 }
 
 .card img {
@@ -247,15 +248,22 @@ h5 {
     top: 0;
     left: 0;
     border-radius: 0.25rem;
-    background-color: white;
+    /* background-color: white; */
+    background-color: black;
     opacity: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 200ms ease;
 }
 
 .card a:hover {
     opacity: 1;
+    color: rgb(30, 30, 30);
+}
+
+.card a:active {
+    color: rgb(30, 30, 30) !important;
 }
 
 .card a:hover::before {
