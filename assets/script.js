@@ -66,7 +66,7 @@ getJSON("./assets/contests.JSON", (err, data)=>{
 
 function addContest(contest, list, num) {
     let container = document.createElement("div");
-    container.setAttribute("class", "col-12 col-sm-6 col-lg-4 p-3");
+    container.setAttribute("class", "col-12 col-sm-6 col-lg-4  col-xl-3 p-3");
 
     let card = document.createElement("div");
     card.classList.add("card");
