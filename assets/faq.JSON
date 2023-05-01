@@ -15,8 +15,8 @@
             ]
         },
         {
-            "Q": "What do I do if it says \"access denied\" on the contest page?",
-            "A": [
+            "Q": "What do I do if it says \"Access denied\" or \"No such contest\"  on the contest page?",
+            "A": [  
                 "Make sure you are logged into DMOJ and your account is part of the RHHS organization.",
                 "To join the RHHS organization, make sure you are logged in, then head over to <a href=\"https://dmoj.ca/organization/19-richmond-hill-hs\" target=\"_blank\">this link</a> and click the blue \"Join organization\" button."
             ]
