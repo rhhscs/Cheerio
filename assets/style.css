@@ -88,6 +88,10 @@ mark {
     background: linear-gradient(66deg, rgba(255,225,35,1) 0%, rgba(255,166,0,1) 100%);
 }
 
+sup {
+    color: inherit
+}
+
 img {
     width: 100%;
     height: 100%;
