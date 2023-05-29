@@ -190,6 +190,23 @@ p {
     border-radius: 10px;
 }
 
+/* Weird white box on previous and next butons */
+.carousel button span:after{
+    content: none !important; 
+}
+
+/* .carousel button span:before {
+    content: "";
+    position: absolute;
+    top: calc(50% - 1.5rem);
+    left: calc(50% - 1.5rem);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: gray;
+    opacity: 60%;
+} */
+
 a:link {
     color: rgb(255,225,35);
 }

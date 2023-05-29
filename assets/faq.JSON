@@ -11,7 +11,7 @@
         {
             "Q": "What programming languages do I need to know?",
             "A": [
-                "For Cheerio 4, it is highly recommended that you are familiar with Python and Java."
+                "As the contests will be run on DMOJ, you should be familiar with at least one of the <a href=\"https://github.com/DMOJ/online-judge#supported-languages\" target=\"_blank\">allowed languages.</a>"
             ]
         },
         {

@@ -1,13 +1,25 @@
 {
     "upcoming": [
         {
-            "title": "Cheerio 4",
-            "date": "May 11 & 18, 2023",
-            "img": "https://img.freepik.com/premium-photo/illustration-gaming-background-abstract-cyberpunk-style-gamer-wallpaper-neon-glow-light-scifi-fluorescent-sticks-digitally-generated-image-based-any-actual-scene-pattern_479694-6131.jpg",
-            "url": "https://dmoj.ca/contest/cheerio4"
+            "title": "No upcoming contests",
+            "date": "---",
+            "img": "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8bmlnaHR8ZW58MHx8MHx8&w=1000&q=80",
+            "url": ""
         }
     ],
     "past": [
+        {
+            "title": "Cheerio 4 Day 2",
+            "date": "May 18, 2023",
+            "img": "https://img.freepik.com/premium-photo/illustration-gaming-background-abstract-cyberpunk-style-gamer-wallpaper-neon-glow-light-scifi-fluorescent-sticks-digitally-generated-image-based-any-actual-scene-pattern_479694-6131.jpg",
+            "url": "https://dmoj.ca/contest/cheerio4b"
+        },
+        {
+            "title": "Cheerio 4 Day 1",
+            "date": "May 11, 2023",
+            "img": "https://img.freepik.com/premium-photo/illustration-gaming-background-abstract-cyberpunk-style-gamer-wallpaper-neon-glow-light-scifi-fluorescent-sticks-digitally-generated-image-based-any-actual-scene-pattern_479694-6131.jpg",
+            "url": "https://dmoj.ca/contest/cheerio4"
+        },
         {
             "title": "Cheerio 3",
             "date": "Feb 2-5, 2023",

@@ -1,0 +1,28 @@
+{
+    "images": [
+        {
+            "src": "./assets/images/cheerio4_3.jpg",
+            "alt": "Fourth Cheerio Contest Trivia Section"
+        },
+        {
+            "src": "./assets/images/cheerio4_1.jpg",
+            "alt": "Fourth Cheerio Contest"
+        },
+        {
+            "src": "./assets/images/cheerio4_2.jpg",
+            "alt": "Fourth Cheerio Contest"
+        },
+        {
+            "src": "./assets/images/cheerio4_4.jpg",
+            "alt": "Fourth Cheerio Contest Awards"
+        },
+        {
+            "src": "./assets/images/cheerio1_1.jpg",
+            "alt": "First Cheerio Contest"
+        },
+        {
+            "src": "./assets/images/cheerio1_2.jpg",
+            "alt": "First Cheerio Contest"
+        }
+    ]
+}

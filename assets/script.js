@@ -1,6 +1,9 @@
 let contestElement = document.querySelectorAll("#contests .row");
 let faqElement = document.querySelectorAll("#faq ul");
 
+let carouselImageElements = document.querySelector("#image-carousel .carousel-inner");
+let carouselIndicatorElements = document.querySelector('#image-carousel .carousel-indicators');
+
 var getJSON = function(url, callback) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
@@ -15,6 +18,44 @@ var getJSON = function(url, callback) {
     };
     xhr.send();
 };
+
+getJSON("./assets/images.JSON", (err, data)=>{
+    let len = data.images.length;
+
+    for (let i = 0; i < len; i++) {
+        addCarouselImage(data.images[i], i);
+    }
+});
+
+function addCarouselImage(image, num) {
+    // Image
+    let item = document.createElement('div');
+    item.classList.add('carousel-item')
+    if (num == 0) item.classList.add('active');
+
+    let img = document.createElement('img');
+    img.setAttribute('src', image.src);
+    img.setAttribute('alt', image.alt);
+    img.classList.add('d-block');
+    img.classList.add('w-100');
+
+    item.appendChild(img);
+    carouselImageElements.appendChild(item);
+
+    // Indicator
+    let button = document.createElement('button');
+    button.setAttribute('type', 'button');
+    button.setAttribute('data-mdb-target', '#image-carousel');
+    button.setAttribute('data-mdb-slide-to', num);
+    button.setAttribute('aria-label', 'Image ' + num);
+
+    if (num == 0) {
+        button.classList.add('active');
+        button.setAttribute('aria-current', 'true');
+    }
+
+    carouselIndicatorElements.appendChild(button);
+}
 
 getJSON("./assets/faq.JSON", (err, data)=>{
     let faqFile = data.entries;
